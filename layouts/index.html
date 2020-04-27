@@ -9,7 +9,7 @@
                 </div>
             {{- end -}}
 
-            <h1 class="display-4">{{ .Site.Title }}</h1>
+            <h1 class="display-4">{{ .Site.Params.homepageTitle }}</h1>
             {{- with .Site.Params.description -}}
                 <h3 class="font-weight-normal">{{ . | safeHTML }}</h3>
             {{- end -}}
@@ -25,7 +25,7 @@
                     {{- $images := . -}}
                     {{- with $page.Site.GetPage "section" "images" -}}
                         {{- with .Resources.GetMatch (strings.TrimPrefix "/images/" (index $images 0)) -}}
-                            {{- $image := .Fill "700x450" -}}
+                            {{- $image := .Fit "700x450" -}}
                             <a href="{{ $page.RelPermalink }}" class="d-block">
                                 <img data-src="{{ $image.RelPermalink }}" class="img-fluid rounded" alt="{{ $page.Title }}">
                             </a>
